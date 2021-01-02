@@ -1,0 +1,8 @@
+.container{
+    max-width: 1000px;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+body{
+    font-family: 'Raleway', arial,sans-serif;
+}
