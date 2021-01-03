@@ -1,43 +1,44 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
+import {Link, useLocation} from 'react-router-dom';
 
 import './Navigation.css';
 
 function Navigation() {
+   
+    const location = useLocation();
 
-    const handleNavClick = (index) =>{
-        if(index === 1){
-            setFirstLinkActive(true);
-            setSecondLinkActive(false)
-            setThirdLinkActive(false)
-        }else if(index === 2){
-            setFirstLinkActive(false);
-            setSecondLinkActive(true)
-            setThirdLinkActive(false)
-        }else if(index === 3){
-            setFirstLinkActive(false);
-            setSecondLinkActive(false)
-            setThirdLinkActive(true);
+    useEffect(()=>{
+        const link1 =  document.querySelector('.nav__link:nth-child(1)');
+        const link2 = document.querySelector('.nav__link:nth-child(2)');
+        const link3 = document.querySelector('.nav__link:nth-child(3)');
+        if(location.pathname === '/active'){
+           link1.classList.remove('active');
+           link2.classList.add('active');
+           link3.classList.remove('active')
+          
+        }else if(location.pathname === '/completed'){
+            link1.classList.remove('active');
+            link2.classList.remove('active');
+            link3.classList.add('active')
+         
+        } else {
+            link1.classList.add('active');
+            link2.classList.remove('active');
+            link3.classList.remove('active')
         }
-    };
-
-    const [firstLinkActive, setFirstLinkActive] = useState(true);
-    const [secondLinkActive, setSecondLinkActive] = useState(false);
-    const [thirdLinkActive, setThirdLinkActive] = useState(false);
-    
-    const activeTheme = {
-        borderBottom: '4px solid #2F80ED',
-        borderRadius: '4px 4px 0px 0px',
-    }
+       
+    })
 
     return (
         <nav className='nav'>
             <ul className="nav__list">
-                <li style={firstLinkActive ? activeTheme : null} className="nav__link" onClick={() => handleNavClick(1)}>All</li>
-                <li style={secondLinkActive ? activeTheme : null}  className="nav__link" onClick={() => handleNavClick(2)}>Active</li>
-                <li style={thirdLinkActive ? activeTheme : null} className="nav__link" onClick={() => handleNavClick(3)}>Completed</li>
+                <li className='nav__link'><Link to='/'>All</Link></li>
+                <li className='nav__link'><Link to='/active'>Active</Link></li>
+                <li className='nav__link'><Link to='/completed'>Completed</Link></li>
             </ul>
         </nav>
     )
 }
 
 export default Navigation;
+
