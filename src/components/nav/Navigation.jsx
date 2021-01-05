@@ -1,22 +1,22 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 import './Navigation.css';
 
-function Navigation({click, items, activeIndex}) {
-
-    const checkClasses = (index) => (
-        `nav__link ${index === activeIndex ? 'active': null}`
-    )
+function Navigation() {
 
     return (
         <nav className='nav'>
             <ul className="nav__list">
-             {items.map((item,index) => (
-                <li onClick={()=> click(index)} className={checkClasses(index)} key={index}>
-                    <Link to={item}>{item}</Link>
+                <li className="nav__link">
+                    <NavLink to='/all' activeClassName='active'>All</NavLink>
                 </li>
-            ))}
+                <li className="nav__link">
+                    <NavLink to='/active' activeClassName='active'>Active</NavLink>
+                </li>  
+                <li className="nav__link">
+                    <NavLink to='/completed' activeClassName='active'>Comleted</NavLink>
+                </li> 
             </ul>
         </nav>
     )

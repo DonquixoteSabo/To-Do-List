@@ -10,8 +10,6 @@ import './App.css';
 import './reset.css';
 
 function App() {
-  //State for NAVIGATION
-  const [activeIndex, setActiveIndex] = useState(0);
   //States for MAIN and ADDTASK
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([
@@ -33,12 +31,6 @@ function App() {
   ]);
 
   //******************************************************************* */
-
-  //NAVIGATION
-  const handleNavClick = index => {
-    setActiveIndex(index);
-  };
-  //NAVIGATION
 
   //ADDTASK
   const handleSubmit = event => {
@@ -79,11 +71,7 @@ function App() {
     <div className='container'>
       <Router>
         <Header />
-        <Navigation
-          items={['All', 'Active', 'Completed']}
-          click={handleNavClick}
-          activeIndex={activeIndex}
-        />
+        <Navigation />
         <AddTask
           value={inputValue}
           handleChange={handleChange}
