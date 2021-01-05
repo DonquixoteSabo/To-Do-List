@@ -1,20 +1,29 @@
+import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
+import All from './pages/All';
+import Completed from './pages/Completed';
+import Active from './pages/Active';
 
-import Active from './Active';
-import All from './All';
-import Completed from './Completed';
 
-function Main() {
+function Main({todos}) {
+  
     return(
-        <Switch>
-            {/* <Route path='/active' component={Active}/> */}
-            <Route path='/active'>{<Active />}</Route>
-            {/* <Route path='/completed' component={Completed}/> */}
-            <Route path='/completed'>{<Completed />}</Route>
-            {/* <Route path='/' component={All}/> */}
-            <Route path='/'>{<All />}</Route>
-            <Redirect from='*' to='/' />
-        </Switch>
+             <Switch> 
+                <Route path='/active'>{
+                    <Active 
+                    todos={todos} />}
+                 </Route>
+                <Route path='/completed'>{
+                    <Completed 
+                    todos={todos} />}
+                </Route>
+                <Route path='/'>{
+                    <All 
+                    todos={todos} />}
+                </Route>
+                <Redirect from='*' to='/' />
+             </Switch> 
+  
     )
 }
 

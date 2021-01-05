@@ -12,14 +12,48 @@ import './reset.css';
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const [inputValue, setInputValue] = useState('');
+  const [todos, setTodos] = useState([
+    {
+      task: 'Ogarnij reacta',
+      isActive: true,
+      id: 1,
+    },
+    {
+      task: 'Ogarnij Mobx',
+      isActive: false,
+      id: 2,
+    },
+    {
+      task: 'Skoncz apke todo',
+      isActive: true,
+      id: 3,
+    },
+  ]);
+  // const handleCheckboxChange = (event) =>{
+
+  // }
+  const handleSubmit = event => {
+    event.preventDefault();
+    const id = todos.length + 1;
+    const currentElement = {
+      task: inputValue,
+      isActive: true,
+      id,
+    };
+    const newTodos = todos.concat(currentElement);
+    setTodos(newTodos);
+    setInputValue('');
+  };
+
   const handleNavClick = index => {
     setActiveIndex(index);
   };
 
-  const [inputValue, setInputValue] = useState('');
   const handleChange = event => {
     setInputValue(event.target.value);
   };
+
   return (
     <div className='container'>
       <Router>
@@ -29,8 +63,12 @@ function App() {
           click={handleNavClick}
           activeIndex={activeIndex}
         />
-        <AddTask value={inputValue} handleChange={handleChange} />
-        <Main />
+        <AddTask
+          value={inputValue}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+        <Main todos={todos} />
       </Router>
     </div>
   );
