@@ -1,4 +1,4 @@
-const Item = ({task, id, isActive, handleCheckboxChange}) => {
+const Item = ({task, id, isActive, handleCheckboxChange, handleChangeState}) => {
     return  (
         <li className='task__item'>
             <p className='task__text'>{task}</p>
@@ -7,6 +7,7 @@ const Item = ({task, id, isActive, handleCheckboxChange}) => {
             className="task__checkbox"
             checked={!isActive}
             onChange={()=>handleCheckboxChange(id)}
+            onClick={handleChangeState}
             />
         </li>
     );
