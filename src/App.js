@@ -10,8 +10,9 @@ import './App.css';
 import './reset.css';
 
 function App() {
+  //State for NAVIGATION
   const [activeIndex, setActiveIndex] = useState(0);
-
+  //States for MAIN and ADDTASK
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([
     {
@@ -20,7 +21,7 @@ function App() {
       id: 1,
     },
     {
-      task: 'Ogarnij Mobx',
+      task: 'Naprawić błąd :D',
       isActive: false,
       id: 2,
     },
@@ -31,6 +32,15 @@ function App() {
     },
   ]);
 
+  //******************************************************************* */
+
+  //NAVIGATION
+  const handleNavClick = index => {
+    setActiveIndex(index);
+  };
+  //NAVIGATION
+
+  //ADDTASK
   const handleSubmit = event => {
     event.preventDefault();
     const id = todos.length + 1;
@@ -43,15 +53,28 @@ function App() {
     setTodos(newTodos);
     setInputValue('');
   };
-
-  const handleNavClick = index => {
-    setActiveIndex(index);
-  };
-
+  //ADDTASK
   const handleChange = event => {
     setInputValue(event.target.value);
   };
-
+  //MAIN
+  const handleCheckboxChange = id => {
+    let currentTodos = todos;
+    currentTodos.forEach(todo => {
+      if (todo.id === id) {
+        todo.isActive = !todo.isActive;
+        console.log(todo.isActive);
+      }
+    });
+    console.log(currentTodos);
+    setTodos(currentTodos);
+  };
+  // const handleDelteTask = id => {
+  //   let currentTodos = todos;
+  //   currentTodos = currentTodos.filter(todo => todo.id !== id);
+  //   setTodos(currentTodos);
+  // };
+  //Main
   return (
     <div className='container'>
       <Router>
@@ -66,7 +89,7 @@ function App() {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
-        <Main todos={todos} />
+        <Main todos={todos} handleCheckboxChange={handleCheckboxChange} />
       </Router>
     </div>
   );

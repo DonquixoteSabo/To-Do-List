@@ -5,21 +5,24 @@ import Completed from './pages/Completed';
 import Active from './pages/Active';
 
 
-function Main({todos}) {
+function Main({todos, handleCheckboxChange}) {
   
     return(
              <Switch> 
                 <Route path='/active'>{
                     <Active 
-                    todos={todos} />}
+                    todos={todos}
+                    handleCheckboxChange={handleCheckboxChange} />}
                  </Route>
                 <Route path='/completed'>{
                     <Completed 
-                    todos={todos} />}
+                    todos={todos}
+                    handleCheckboxChange={handleCheckboxChange} />}
                 </Route>
                 <Route path='/'>{
                     <All 
-                    todos={todos} />}
+                    todos={todos}
+                    handleCheckboxChange={handleCheckboxChange} />}
                 </Route>
                 <Redirect from='*' to='/' />
              </Switch> 

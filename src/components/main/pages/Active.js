@@ -7,7 +7,13 @@ function Active(props) {
   return (
     <ul>
       {todos.map(todo => (
-        <Item key={todo.id} task={todo.task} id={todo.id} isActive={true} />
+        <Item
+          handleCheckboxChange={props.handleCheckboxChange}
+          key={todo.id}
+          task={todo.task}
+          id={todo.id}
+          isActive={true}
+        />
       ))}
     </ul>
   );

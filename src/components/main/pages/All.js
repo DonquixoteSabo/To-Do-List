@@ -1,10 +1,11 @@
 import Item from '../Item';
 
-const All = ({ todos }) => {
+const All = props => {
   return (
     <ul>
-      {todos.map(todo => (
+      {props.todos.map(todo => (
         <Item
+          handleCheckboxChange={props.handleCheckboxChange}
           key={todo.id}
           task={todo.task}
           id={todo.id}
