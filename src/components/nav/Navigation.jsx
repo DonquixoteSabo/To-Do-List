@@ -15,7 +15,7 @@ function Navigation() {
                     <NavLink to='/active' activeClassName='active'>Active</NavLink>
                 </li>  
                 <li className="nav__link">
-                    <NavLink to='/completed' activeClassName='active'>Comleted</NavLink>
+                    <NavLink to='/completed' activeClassName='active'>Completed</NavLink>
                 </li> 
             </ul>
         </nav>
