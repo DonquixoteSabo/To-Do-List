@@ -1,5 +1,18 @@
+import Item from '../Item';
+
 const All = ({ todos }) => {
-  return <h1>all</h1>;
+  return (
+    <ul>
+      {todos.map(todo => (
+        <Item
+          key={todo.id}
+          task={todo.task}
+          id={todo.id}
+          isActive={todo.isActive}
+        />
+      ))}
+    </ul>
+  );
 };
 
 export default All;

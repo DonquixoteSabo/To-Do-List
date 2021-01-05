@@ -5,7 +5,7 @@ const Item = ({task, id, isActive}) => {
             <input 
             type='checkbox'
             className="task__checkbox"
-            checked={isActive}
+            // checked={isActive}
             />
         </li>
     );

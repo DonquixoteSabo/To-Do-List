@@ -30,9 +30,7 @@ function App() {
       id: 3,
     },
   ]);
-  // const handleCheckboxChange = (event) =>{
 
-  // }
   const handleSubmit = event => {
     event.preventDefault();
     const id = todos.length + 1;
