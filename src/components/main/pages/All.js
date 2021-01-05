@@ -17,6 +17,7 @@ const All = props => {
           task={todo.task}
           id={todo.id}
           isActive={todo.isActive}
+          handleDeleteTask={props.handleDeleteTask}
         />
       ))}
     </ul>

@@ -7,7 +7,7 @@ const AddTask = ({value, handleChange, handleSubmit}) => {
                 className='addTask__input' 
                 type="text"
                 placeholder='add details'
-                value={value}
+                value={value} 
                 onChange={handleChange}
                 />
                 <button type='submit' className='addTask__button'>Add</button>

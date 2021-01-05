@@ -30,6 +30,7 @@ function App() {
     },
   ]);
 
+  let currentTodos = todos;
   //******************************************************************* */
 
   //ADDTASK
@@ -51,21 +52,21 @@ function App() {
   };
   //MAIN
   const handleCheckboxChange = id => {
-    let currentTodos = todos;
     currentTodos.forEach(todo => {
       if (todo.id === id) {
         todo.isActive = !todo.isActive;
-        console.log(todo.isActive);
       }
     });
-    console.log(currentTodos);
     setTodos(currentTodos);
   };
-  // const handleDelteTask = id => {
-  //   let currentTodos = todos;
-  //   currentTodos = currentTodos.filter(todo => todo.id !== id);
-  //   setTodos(currentTodos);
-  // };
+  const handleDeleteTask = id => {
+    currentTodos = currentTodos.filter(todo => todo.id !== id);
+    setTodos(currentTodos);
+  };
+  const handleDeleteAll = () => {
+    currentTodos = currentTodos.filter(todo => todo.isActive);
+    setTodos(currentTodos);
+  };
   //Main
   return (
     <div className='container'>
@@ -77,7 +78,12 @@ function App() {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
-        <Main todos={todos} handleCheckboxChange={handleCheckboxChange} />
+        <Main
+          todos={todos}
+          handleCheckboxChange={handleCheckboxChange}
+          handleDeleteTask={handleDeleteTask}
+          handleDeleteAll={handleDeleteAll}
+        />
       </Router>
     </div>
   );

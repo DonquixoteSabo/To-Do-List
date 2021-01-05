@@ -11,18 +11,38 @@ function Completed(props) {
   const handleChangeState = () => setChangeState(changeState + 1);
 
   return (
-    <ul>
-      {todos.map(todo => (
-        <Item
-          key={todo.id}
-          task={todo.task}
-          id={todo.id}
-          isActive={false}
-          handleCheckboxChange={props.handleCheckboxChange}
-          handleChangeState={handleChangeState}
-        />
-      ))}
-    </ul>
+    <>
+      <ul>
+        {todos.map(todo => (
+          <Item
+            key={todo.id}
+            task={todo.task}
+            id={todo.id}
+            isActive={false}
+            handleCheckboxChange={props.handleCheckboxChange}
+            handleChangeState={handleChangeState}
+            handleDeleteTask={props.handleDeleteTask}
+          />
+        ))}
+        <li>
+          <button
+            style={{
+              display: 'block',
+              marginLeft: 'auto',
+              marginRight: 64,
+              backgroundColor: '#EB5757',
+              border: 'none',
+              color: 'white',
+              borderRadius: 4,
+              padding: '10px 20px',
+            }}
+            onClick={props.handleDeleteAll}
+          >
+            delete all
+          </button>
+        </li>
+      </ul>
+    </>
   );
 }
 

@@ -5,8 +5,12 @@
 /.pnp
 .pnp.js
 
-#file with very simple mockup
+#file with very simple mockup and link to design
 Mockup.png
+
+designLink.txt
+
+ReactReadMe.md
 
 # testing
 /coverage

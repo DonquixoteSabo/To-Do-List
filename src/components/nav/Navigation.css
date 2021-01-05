@@ -4,11 +4,11 @@
 
 .nav__list{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .nav__link{
-    flex-basis: 25%;
+    flex-grow: 1;
 }
 .nav a{
     display: flex;

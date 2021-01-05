@@ -21,6 +21,7 @@ function Active(props) {
           id={todo.id}
           isActive={true}
           handleChangeState={handleChangeState}
+          handleDeleteTask={props.handleDeleteTask}
         />
       ))}
     </ul>
