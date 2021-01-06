@@ -36,7 +36,7 @@ function App() {
   //ADDTASK
   const handleSubmit = event => {
     event.preventDefault();
-    const id = todos.length + 1;
+    const id = Math.floor(Math.random() * 10000);
     const currentElement = {
       task: inputValue,
       isActive: true,
